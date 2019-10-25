@@ -2,7 +2,7 @@
   <img alt="GoStack" title="GoStack" src=".github/logo.png" width="300px" />
   <br />
   <br />
-  Desafio 5: Primeiro projeto com React Native
+  Desafio 6: Primeiro projeto com React Native
 </h1>
 
 <p align="center">

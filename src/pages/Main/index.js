@@ -27,6 +27,7 @@ export default class Main extends Component {
       newUser: '',
       users: [],
       loading: false,
+      error: false,
     };
   }
 
@@ -49,20 +50,32 @@ export default class Main extends Component {
   handleAddUser = async () => {
     const {users, newUser} = this.state;
 
-    this.setState({loading: true});
+    this.setState({loading: true, error: false});
 
-    const response = await api.get(`/users/${newUser}`);
+    try {
+      if (newUser === '') throw new Error('Você precisa indicar um usuário');
 
-    const data = {
-      name: response.data.name,
-      login: response.data.login,
-      bio: response.data.bio,
-      avatar: response.data.avatar_url,
-    };
+      const hasUser = users.find(user => user.login === newUser);
 
-    this.setState({users: [...users, data], newUser: '', loading: false});
+      if (hasUser) throw new Error('Repositório duplicado');
 
-    Keyboard.dismiss();
+      const response = await api.get(`/users/${newUser}`);
+
+      const data = {
+        name: response.data.name,
+        login: response.data.login,
+        bio: response.data.bio,
+        avatar: response.data.avatar_url,
+      };
+
+      this.setState({users: [...users, data], newUser: ''});
+
+      Keyboard.dismiss();
+    } catch (erro) {
+      this.setState({error: true});
+    } finally {
+      this.setState({loading: false});
+    }
   };
 
   handleNavigate = user => {
@@ -72,12 +85,13 @@ export default class Main extends Component {
   };
 
   render() {
-    const {newUser, users, loading} = this.state;
+    const {newUser, users, loading, error} = this.state;
 
     return (
       <Container>
         <Form>
           <Input
+            error={error}
             autoCorrect={false}
             autoCapitalize="none"
             placeholder="Adicionar usuário"

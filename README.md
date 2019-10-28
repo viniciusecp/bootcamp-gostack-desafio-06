@@ -14,7 +14,7 @@
 
 ## :rocket: Sobre o desafio
 
-Nesse desafio foi construído uma aplicação utilizando **React Native** onde o usuário coloca o nome dos usuários do github que deseja e estes ficam salvos no AsyncStorage e listados na tela inicial. É possível ver os repositórios com estrelas do usuário clicando no perfil que deseja ver, onde é direcionado para uma view que contem, além de algumas informações do perfil do usuário, os repositórios que ele deu start, onde, clicando em algum repositório, será gerado uma webview com o source do repositório.
+Nesse desafio foi construído uma aplicação utilizando **React Native** onde o usuário coloca o nome dos usuários do github que deseja e estes ficam salvos no AsyncStorage e listados na tela inicial. É possível ver os repositórios com estrelas do usuário clicando no perfil que deseja ver, onde é direcionado para uma view que contem, além de algumas informações do perfil do usuário, os repositórios que ele deu star, onde, clicando em algum repositório, será gerado uma webview com o source do repositório.
 
 ## :wrench: Conceitos
 
